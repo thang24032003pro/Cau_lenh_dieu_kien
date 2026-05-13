@@ -1,0 +1,5 @@
+Prompt 1: "Tại sao logic điều kiện thường sai ở giá trị biên? Cho ví dụ về mốc 500k."
+
+Prompt 2: "Gợi ý bộ dữ liệu test cho hạng VIP với ngưỡng 500k để bao phủ hết các trường hợp."
+
+Prompt 3: "Hướng dẫn viết hàm assertEquals thủ công trong JavaScript để hiển thị kết quả PASSED/FAILED lên console."

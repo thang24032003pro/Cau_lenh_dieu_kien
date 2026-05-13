@@ -1,0 +1,5 @@
+Prompt 1: "Arrow Anti-Pattern là gì và tại sao nó lại nguy hiểm trong các hệ thống tài chính?"
+
+Prompt 2: "Giải thích kỹ thuật Guard Clauses (Early Return). Tại sao dùng nó lại giúp code phẳng hơn?"
+
+Prompt 3: "Làm thế nào để đảo ngược điều kiện logic từ >= thành < mà không làm sai lệch kết quả với giá trị biên?"
