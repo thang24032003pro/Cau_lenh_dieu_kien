@@ -1,0 +1,5 @@
+Prompt 1: "Trong lập trình, khi nào tôi nên dùng switch-case thay vì một chuỗi if-else if liên tiếp?"
+
+Prompt 2: "Giải thích cho tôi hiện tượng fall-through trong switch-case nếu thiếu break."
+
+Prompt 3: "Đóng vai Tester QA, hãy sinh cho tôi 5 bộ dữ liệu test bao gồm cả giá trị dị thường cho hàm tính cước."
