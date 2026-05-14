@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Puzzle Game</title>
+    <style>
+        :root{--tile-width:400px;--tile-height:80px}
+        body{font-family: Arial, Helvetica, sans-serif;display:flex;align-items:flex-start;justify-content:center;min-height:100vh;margin:0;padding-top:18px;background:#f5f5f5}
+        .container{display:flex;flex-direction:column;align-items:center;gap:8px}
+        .tiles{display:flex;flex-direction:column;gap:14px;width:760px}
+        .tiles img{width:100%;height:120px;cursor:pointer;display:block;box-shadow:0 2px 6px rgba(0,0,0,0.12);border:6px solid #fff;border-radius:2px}
+        .win{box-shadow:0 0 12px 4px rgba(255,0,0,0.35);border-color:#fff}
+        /* subtle red outline like demo */
+        .win{outline:4px solid rgba(255,77,77,0.85);outline-offset:4px}
+        #message{display:none}
+        @media(max-width:480px){:root{--tile-width:280px;--tile-height:56px}}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tiles">
+            <img id="img1" src="img/nro.jpg" data-name="funny-cat1" onclick="changeImage(1)" alt="part1">
+            <img id="img2" src="img/nro1.jpg" data-name="funny-cat1" onclick="changeImage(2)" alt="part2">
+            <img id="img3" src="img/nro2.jpg" data-name="monkey" onclick="changeImage(3)" alt="part3">
+            <img id="img4" src="img/nro3.jpg" data-name="funny-cat1" onclick="changeImage(4)" alt="part4">
+            <img id="img5" src="img/nro4.jpg" data-name="funny-cat1" onclick="changeImage(5)" alt="part5">
+        </div>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        const images = ["nro", "nro1", "nro2", "nro3", "nro4"];
+
+        function changeImage(part) {
+            const img = document.getElementById("img" + part);
+            const randomIdx = Math.floor(Math.random() * images.length);
+            const name = images[randomIdx];
+            img.src = `img/${name}_part${part}x1.jpg`;
+            img.setAttribute("data-name", name);
+            // fallback to placeholder if image fails to load
+            img.onerror = function() { this.src = 'img/nro.jpg'; };
+            checkWin();
+        }
+
+        function checkWin() {
+            const parts = [1,2,3,4,5].map(n => document.getElementById(`img${n}`).getAttribute('data-name'));
+            const allImages = document.querySelectorAll('.tiles img');
+            const message = document.getElementById('message');
+            const same = parts.every(p => p === parts[0]);
+            if (same) {
+                allImages.forEach(i => i.classList.add('win'));
+                message.textContent = 'Congratulations! You completed the picture.';
+            } else {
+                allImages.forEach(i => i.classList.remove('win'));
+                message.textContent = '';
+            }
+        }
+
+        // initialize image sources using downloaded image files
+        (function init() {
+            const initial = ['nro_part1x1.jpg','nro_part2x1.jpg','nro_part3x1.jpg','nro_part4x1.jpg','nro_part5x1.jpg'];
+            for (let i=1;i<=5;i++){
+                const el = document.getElementById('img'+i);
+                el.src = 'img/' + initial[i-1];
+                // set data-name based on filename prefix
+                const name = initial[i-1].split('_part')[0];
+                el.setAttribute('data-name', name);
+                el.onerror = function(){ this.src = 'img/nro.jpg'; };
+            }
+            checkWin();
+        })();
+    </script>
+</body>
+</html>
