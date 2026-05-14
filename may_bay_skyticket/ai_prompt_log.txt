@@ -1,0 +1,5 @@
+Prompt 1: Arrow Anti-Pattern là gì và tại sao nó gây khó khăn cho việc bảo trì hệ thống đặt vé?
+
+Prompt 2: Giải thích nguyên lý đảo ngược điều kiện (De Morgan's laws) khi chuyển từ if lồng nhau sang Guard Clauses.
+
+Prompt 3: Cách tính độ phức tạp Cyclomatic Complexity trong cấu trúc if-else lồng nhau.
