@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ứng Dụng Tính Toán Đa Năng</title>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #f39c12;
+            --success-color: #2ecc71;
+            --danger-color: #e74c3c;
+            --bg-color: #f4f7f6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h2 { color: #2c3e50; margin-bottom: 10px; }
+        p { color: #7f8c8d; margin-bottom: 30px; }
+
+        .section-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #95a5a6;
+            margin: 20px 0 10px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        button {
+            padding: 12px 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: white;
+            color: #333;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid #dcdde1;
+            font-size: 14px;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Màu sắc riêng cho từng nhóm để dễ phân biệt */
+        .group-convert button:hover { background-color: #3498db; }
+        .group-geometry button:hover { background-color: #9b59b6; }
+        .group-logic button:hover { background-color: #2ecc71; }
+        .group-finance button:hover { background-color: #f1c40f; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Hệ Thống Tính Toán Đa Năng</h2>
+    <p>Chọn một chức năng bên dưới để bắt đầu</p>
+
+    <div class="section-title">Chuyển đổi đơn vị</div>
+    <div class="grid-container group-convert">
+        <button onclick="xinchaoCF()">Bài 1: C sang F</button>
+        <button onclick="xinchaoFeet()">Bài 2: Mét sang Feet</button>
+    </div>
+
+    <div class="section-title">Hình học & Phương trình</div>
+    <div class="grid-container group-geometry">
+        <button onclick="calulateHinhvuong()">Bài 3: Diện tích Hình vuông</button>
+        <button onclick="calulateHCN()">Bài 4: Diện tích HCN</button>
+        <button onclick="calulateHV()">Bài 5: Diện tích Tam giác vuông</button>
+        <button onclick="calculateB1()">Bài 6: PT Bậc 1</button>
+        <button onclick="calculateB2()">Bài 7: PT Bậc 2</button>
+    </div>
+
+    <div class="section-title">Kiểm tra Logic</div>
+    <div class="grid-container group-logic">
+        <button onclick="calculateAge()">Bài 8: Kiểm tra tuổi</button>
+        <button onclick="calculateTamgiac()">Bài 9: Kiểm tra Tam giác</button>
+    </div>
+
+    <div class="section-title">Tài chính & Thuế</div>
+    <div class="grid-container group-finance">
+        <button onclick="calculateElectricity()">Bài 10: Giá điện</button>
+        <button onclick="calculateTax()">Bài 11: Thuế TNCN</button>
+        <button onclick="calculateInterest()">Bài 12: Lãi kép</button>
+    </div>
+</div>
+
+<script>
+    // Bài 1: C sang F
+    function xinchaoCF(){
+        let c = parseFloat(prompt("Nhập độ C:"));
+        if (isNaN(c)) return;
+        let f = c * 9 / 5 + 32;
+        alert(c + "°C tương ứng với " + f.toFixed(2) + "°F");
+    }
+
+    // Bài 2: Mét sang Feet
+    function xinchaoFeet(){
+        let m = parseFloat(prompt("Nhập số mét:"));
+        if (isNaN(m)) return;
+        let ft = m * 3.2808;
+        alert(m + " mét tương ứng với " + ft.toFixed(4) + " feet");
+    }
+
+    // Bài 3: Hình vuông
+    function calulateHinhvuong(){
+        let a = parseFloat(prompt("Nhập cạnh hình vuông:"));
+        if (isNaN(a)) return;
+        alert("Diện tích hình vuông là: " + (a * a));
+    }
+
+    // Bài 4: Hình chữ nhật
+    function calulateHCN(){
+        let hcnA = parseFloat(prompt("Nhập chiều dài HCN:"));
+        let hcnB = parseFloat(prompt("Nhập chiều rộng HCN:"));
+        if (isNaN(hcnA) || isNaN(hcnB)) return;
+        alert("Diện tích hình chữ nhật là: " + (hcnA * hcnB));
+    }
+
+    // Bài 5: Tam giác vuông 
+    function calulateHV(){
+        let tgA = parseFloat(prompt("Nhập cạnh kề 1:"));
+        let tgB = parseFloat(prompt("Nhập cạnh kề 2:"));
+        if (isNaN(tgA) || isNaN(tgB)) return;
+        alert("Diện tích tam giác vuông là: " + (0.5 * tgA * tgB));
+    }
+
+    // Bài 6: Bậc 1
+    function calculateB1(){
+        let a = parseFloat(prompt("Giải ax + b = 0. Nhập a:"));
+        let b = parseFloat(prompt("Nhập b:"));
+        if (isNaN(a) || isNaN(b)) return;
+        if (a === 0) {
+            alert(b === 0 ? "Phương trình vô số nghiệm" : "Phương trình vô nghiệm");
+        } else {
+            alert("Nghiệm x = " + (-b / a));
+        }
+    }
+
+    // Bài 7: Bậc 2
+    function calculateB2(){
+        let a = parseFloat(prompt("Giải ax² + bx + c = 0. Nhập a:"));
+        let b = parseFloat(prompt("Nhập b:"));
+        let c = parseFloat(prompt("Nhập c:"));
+        if (isNaN(a) || isNaN(b) || isNaN(c)) return;
+        if (a === 0) {
+            alert("Đây là PT bậc 1. Nghiệm x = " + (-c / b));
+        } else {
+            let delta = b * b - 4 * a * c;
+            if (delta < 0) alert("Phương trình vô nghiệm");
+            else if (delta === 0) alert("Nghiệm kép x = " + (-b / (2 * a)));
+            else alert("x1 = " + ((-b + Math.sqrt(delta)) / (2 * a)) + "\nx2 = " + ((-b - Math.sqrt(delta)) / (2 * a)));
+        }
+    }
+
+    // Bài 8: Tuổi
+    function calculateAge() {
+        let age = parseInt(prompt("Nhập số tuổi:"));
+        if (isNaN(age)) return;
+        if (age > 0 && age < 120) alert("Tuổi " + age + " là hợp lệ");
+        else alert("Đây không phải tuổi người bình thường");
+    }
+
+    // Bài 9: Tam giác (Sửa lỗi biến x,y,z sang a,b,c)
+    function calculateTamgiac() {
+        let a = parseFloat(prompt("Nhập cạnh a:"));
+        let b = parseFloat(prompt("Nhập cạnh b:"));
+        let c = parseFloat(prompt("Nhập cạnh c:"));
+        if (isNaN(a) || isNaN(b) || isNaN(c)) return;
+        if (a > 0 && b > 0 && c > 0 && (a + b > c) && (b + c > a) && (a + c > b)) {
+            alert("Thỏa mãn: Đây là 3 cạnh của một tam giác");
+        } else {
+            alert("Không thỏa mãn điều kiện tam giác");
+        }
+    }
+
+    // Bài 10: Giá điện
+    function calculateElectricity() {
+        let kwh = parseFloat(prompt("Nhập số điện tiêu thụ (kWh):", 0));
+        if (isNaN(kwh) || kwh < 0) return alert("Vui lòng nhập số hợp lệ!");
+        let total = 0;
+        if (kwh <= 50) total = kwh * 1678;
+        else if (kwh <= 100) total = (50 * 1678) + ((kwh - 50) * 1734);
+        else if (kwh <= 200) total = (50 * 1678) + (50 * 1734) + ((kwh - 100) * 2014);
+        else total = (50 * 1678) + (50 * 1734) + (100 * 2014) + ((kwh - 200) * 2536);
+        alert("Tổng tiền điện: " + total.toLocaleString() + " VNĐ");
+    }
+
+    // Bài 11: Thuế TNCN
+    function calculateTax() {
+        let income = parseFloat(prompt("Nhập thu nhập chịu thuế (VNĐ):", 0));
+        if (isNaN(income) || income < 0) return;
+        let tax = 0;
+        if (income <= 5000000) tax = income * 0.05;
+        else if (income <= 10000000) tax = (income * 0.1) - 250000;
+        else if (income <= 18000000) tax = (income * 0.15) - 750000;
+        else tax = (income * 0.2) - 1650000;
+        alert("Thuế TNCN cần nộp: " + (tax > 0 ? tax.toLocaleString() : 0) + " VNĐ");
+    }
+
+    // Bài 12: Lãi kép
+    function calculateInterest() {
+        let p = parseFloat(prompt("Số tiền ban đầu (VNĐ):", 0));
+        let n = parseInt(prompt("Số tháng gửi:", 0));
+        let r = parseFloat(prompt("Lãi suất hàng tháng (%):", 0));
+        if (isNaN(p) || isNaN(n) || isNaN(r)) return;
+        let amount = p * Math.pow((1 + r / 100), n);
+        alert("Tổng tiền nhận được: " + amount.toLocaleString() + " VNĐ");
+    }
+</script>
+
+</body>
+</html>
