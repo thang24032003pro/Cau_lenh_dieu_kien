@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Good Cheap Fast - Color Update</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; flex-direction: column; align-items: center; gap: 20px; padding-top: 50px; background-color: #f4f4f9; }
+        
+        .row { display: flex; align-items: center; gap: 20px; width: 250px; justify-content: flex-start; }
+        label { font-weight: bold; font-size: 24px; color: #333; }
+
+        .switch { position: relative; display: inline-block; width: 80px; height: 40px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 40px; }
+        .slider:before { position: absolute; content: ""; height: 32px; width: 32px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+        
+        input:checked + .slider:before { transform: translateX(40px); }
+
+        #good:checked + .slider { background-color: #4CAF50; }
+        #cheap:checked + .slider { background-color: #2196F3; } 
+        #fast:checked + .slider { background-color: #FF9800; }  
+
+    </style>
+</head>
+<body>
+
+    <div class="row">
+        <label class="switch"><input type="checkbox" id="good" onclick="check('good')"><span class="slider"></span></label>
+        <label>GOOD</label>
+    </div>
+
+    <div class="row">
+        <label class="switch"><input type="checkbox" id="cheap" onclick="check('cheap')"><span class="slider"></span></label>
+        <label>CHEAP</label>
+    </div>
+
+    <div class="row">
+        <label class="switch"><input type="checkbox" id="fast" onclick="check('fast')"><span class="slider"></span></label>
+        <label>FAST</label>
+    </div>
+
+    <script>
+        function check(name) {
+            let isGood = document.getElementById('good').checked;
+            let isCheap = document.getElementById('cheap').checked;
+            let isFast = document.getElementById('fast').checked;
+
+            // Xử lý logic if lồng nhau để đảm bảo không thể bật cả 3 cùng lúc
+            if (isGood && isCheap && isFast) {
+                if (name === 'good') {
+                    document.getElementById('fast').checked = false;
+                } else if (name === 'cheap') {
+                    document.getElementById('good').checked = false;
+                } else if (name === 'fast') {
+                    document.getElementById('cheap').checked = false;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

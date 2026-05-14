@@ -10,13 +10,12 @@
     </style>
 </head>
 <body>
-    <h1 id="question">Bạn có thấy mình đẹp trai/xinh gái không?</h1>
+    <h1 id="question">Học code có khó không?</h1>
     <button type="button" id="btnYes" onclick="sayYes()">CÓ</button>
     <button type="button" id="btnNo" onmouseover="moveButton()">KHÔNG</button>
 
     <script>
         function sayYes() {
-            // Câu lệnh if đơn giản kiểm tra sự kiện
             alert("Đúng vậy, bạn thật tự tin và tuyệt vời!");
         }
 
@@ -24,15 +23,12 @@
             let x = Math.random() * window.innerWidth;
             let y = Math.random() * window.innerHeight;
 
-            // Sử dụng if lồng nhau để kiểm tra giới hạn màn hình
             if (x < window.innerWidth) {
                 if (y < window.innerHeight) {
-                    // Đảm bảo nút không bị mất khỏi màn hình hiển thị
                     if (x > 100 && y > 100) {
                         document.getElementById("btnNo").style.left = x + "px";
                         document.getElementById("btnNo").style.top = y + "px";
                     } else {
-                        // Nếu vị trí quá sát góc, đặt lại vị trí mặc định
                         document.getElementById("btnNo").style.left = "200px";
                         document.getElementById("btnNo").style.top = "200px";
                     }
